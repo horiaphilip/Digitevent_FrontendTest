@@ -1,30 +1,36 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, onMounted } from "vue";
+import { fetchJoke, fetchFact } from "./services/api";
+import ContentCard from "./components/ContentCard.vue";
+
+const joke = ref("");
+const fact = ref("");
+
+async function getJoke() {
+  // fetch a joke
+
+  const result = await fetchJoke();
+  joke.value = result;
+}
+
+async function getFact() {
+  //fetch a fact
+  const result = await fetchFact();
+  fact.value = result;
+}
+
+onMounted(() => {
+  getJoke();
+  getFact();
+});
 </script>
+
+//bind fetch w the get fct
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template>
+    <ContentCard type="joke" :content="joke" @fetch="getJoke" />
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+    <ContentCard type="fact" :content="fact" @fetch="getFact" />
+  </div>
+</template>
