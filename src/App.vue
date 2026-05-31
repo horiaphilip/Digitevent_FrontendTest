@@ -7,18 +7,25 @@ import LogComp from "./components/LogComp.vue";
 export interface logType {
   id: number;
   type: "joke" | "fact";
+  time: string;
 }
 //states+array for logs
 const joke = ref("");
 const fact = ref("");
-const logs = ref<logType[]>([]); //array for logs
+const logs = ref<logType[]>([]);
 let nextId = 1;
+
+//to display time in logs
+function getTime() {
+  return new Date().toLocaleTimeString();
+}
 
 function addLog(type: "joke" | "fact") {
   // add a new log to the beggining
   logs.value.unshift({
     id: nextId++,
     type: type,
+    time: getTime(),
   });
 }
 
