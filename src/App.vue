@@ -8,6 +8,7 @@ export interface logType {
   id: number;
   type: "joke" | "fact";
   time: string;
+  text: string;
 }
 //states+array for logs
 const joke = ref("");
@@ -20,12 +21,13 @@ function getTime() {
   return new Date().toLocaleTimeString();
 }
 
-function addLog(type: "joke" | "fact") {
+function addLog(type: "joke" | "fact", text: string) {
   // add a new log to the beggining
   logs.value.unshift({
     id: nextId++,
     type: type,
     time: getTime(),
+    text: text,
   });
 }
 
@@ -33,14 +35,14 @@ async function getJoke() {
   // fetch a joke
   const result = await fetchJoke();
   joke.value = result;
-  addLog("joke");
+  addLog("joke", result.slice(0, 20) + "..."); // send only 20 ch to log
 }
 
 async function getFact() {
   //fetch a fact
   const result = await fetchFact();
   fact.value = result;
-  addLog("fact");
+  addLog("fact", result.slice(0, 20) + "...");
 }
 
 onMounted(() => {

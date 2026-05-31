@@ -14,6 +14,7 @@ defineProps<{
     <div v-for="x in logs" :key="x.id">
       <p>{{ x.time }}</p>
       <p>{{ x.type }}</p>
+      <p>{{ x.text }}</p>
     </div>
   </div>
 </template>
