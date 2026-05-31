@@ -12,8 +12,8 @@ defineProps<{
   <div class="log">
     <h2>Logs</h2>
     <div v-for="x in logs" :key="x.id">
-      <p>{{ x.time }}</p>
-      <p>{{ x.type }}</p>
+      <p><strong>{{ x.time }}</strong></p>
+      <p><strong><u>{{ x.type }}</u></strong></p>
       <p>{{ x.text }}</p>
     </div>
   </div>
@@ -25,5 +25,6 @@ defineProps<{
   border-radius: 10px;
   padding: 16px;
   width: 320px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 </style>

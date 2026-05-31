@@ -66,6 +66,6 @@ onMounted(() => {
   display: flex;
   gap: 24px;
   padding: 24px;
-  background: grey;
+  background: lightgrey;
 }
 </style>
