@@ -52,9 +52,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <ContentCard type="joke" :content="joke" @fetch="getJoke" />
-    <ContentCard type="fact" :content="fact" @fetch="getFact" />
+  <div class="layout">
+    <div>
+      <ContentCard type="joke" :content="joke" @fetch="getJoke" />
+      <ContentCard type="fact" :content="fact" @fetch="getFact" />
+    </div>
     <LogComp :logs="logs" />
   </div>
 </template>
+
+<style>
+.layout {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background: grey;
+}
+</style>

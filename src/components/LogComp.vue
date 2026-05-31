@@ -9,7 +9,7 @@ defineProps<{
 ///we take a loop to go through all the logs and show the type
 
 <template>
-  <div>
+  <div class="log">
     <h2>Logs</h2>
     <div v-for="x in logs" :key="x.id">
       <p>{{ x.time }}</p>
@@ -18,3 +18,12 @@ defineProps<{
     </div>
   </div>
 </template>
+
+<style>
+.log {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  width: 320px;
+}
+</style>
